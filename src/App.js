@@ -7,7 +7,7 @@ import Alert from './components/Alert';
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes, 
   Route,
   Link
 } from "react-router-dom";
@@ -49,18 +49,14 @@ function App() {
      <Navbar title="TextUtensils " h1="HOME" h2="About" bar="Search" mode={mode} toggleMode={toggleMode} />
      <Alert alert={alert}/>
      
-     <Switch>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route path="/">
-          <TextForm mode={mode} showAlert={showAlert}/>
-          </Route>
-      </Switch>
+     <Routes>
+          <Route exact path="/about" element={<About/>}></Route>
+          <Route exact path="/" element={<TextForm mode={mode} showAlert={showAlert}/>}></Route>
+      </Routes>
     </>
     </Router>
    
-   
+    
   );
 }
 
