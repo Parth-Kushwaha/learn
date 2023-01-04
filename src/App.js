@@ -4,6 +4,13 @@ import TextForm from "./components/textForm";
 import About from "./components/About";
 import { useState } from 'react';
 import Alert from './components/Alert';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode]=useState("light");
@@ -33,13 +40,26 @@ function App() {
       showAlert("Light mode has been enabled", "Success")
     } 
   } 
+
+  
+
   return (
+    <Router>
     <>
-     <Navbar title="TextUtensils " h1="HOME" h2="About" bar="Search" mode={mode} toggleMode={toggleMode}/>
+     <Navbar title="TextUtensils " h1="HOME" h2="About" bar="Search" mode={mode} toggleMode={toggleMode} />
      <Alert alert={alert}/>
-     <TextForm mode={mode} showAlert={showAlert}/>
-     {/* <About/> */}
+     
+     <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route path="/">
+          <TextForm mode={mode} showAlert={showAlert}/>
+          </Route>
+      </Switch>
     </>
+    </Router>
+   
    
   );
 }
