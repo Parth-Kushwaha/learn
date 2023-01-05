@@ -1,5 +1,3 @@
-import React, {useState} from 'react'
-
 export default function About(props) {
     // const [myStyle, setMyStyle]=useState({
     //     backgroundColor:"white",

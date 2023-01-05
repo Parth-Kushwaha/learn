@@ -24,9 +24,9 @@ export default function TextForm(props) {
     const handleCopy=()=>{
         var text=document.getElementById("exampleFormControlTextarea1")
         text.select();
-        text.setSelectionRange(0,9999);
         navigator.clipboard.writeText(text.value);
-        props.showAlert("Text Copied to Clipboard", "Success")
+        document.getSelection().removeAllRanges();
+        props.showAlert("Text Copied to Clipboard", "Success");
     }
 
     const handleClear=()=>{
@@ -57,7 +57,7 @@ export default function TextForm(props) {
         <p>{text.split (" ").filter((element)=>{return element.length !== 0}).length} words and {text.length} characters in your text</p>
         <p>{ 0.008 * text.split (" ").filter((element)=>{return element.length !== 0}).length} minutes taken to read for an averge reader</p>
         <h2>PREVIEW OF THE TEXT</h2>
-        <p>{text.length>0 ? text:"Enter some text for preview"}</p>
+        <p>{text.length>0 ? text:"NOTHING TO PREVIEW"}</p>
     </div>
     </>
     
