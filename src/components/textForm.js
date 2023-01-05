@@ -3,22 +3,25 @@ import React, {useState} from 'react'
 
 
 export default function TextForm(props) {
+
+    const [text, setText]= useState("ENTER YOUR TEXT HERE!");
+
     const handleUpClick=()=>{
         let newText=text.toUpperCase()
         setText(newText);
-        props.showAlert("Converted to Upper Case", "Success")
+        props.showAlert("Converted to Upper Case", "Success!")
     }
 
     const handleLowClick=()=>{
         let newText=text.toLowerCase()
         setText(newText);
-        props.showAlert("Converted to Lower Case", "Success")
+        props.showAlert("Converted to Lower Case", "Success!")
         
     }
 
     const handleReverse=()=>{
         setText(text.split("").reverse().join(""));
-        props.showAlert("Text has been reversed", "Success")
+        props.showAlert("Text has been reversed", "Success!")
     }
 
     const handleCopy=()=>{
@@ -26,25 +29,25 @@ export default function TextForm(props) {
         text.select();
         navigator.clipboard.writeText(text.value);
         document.getSelection().removeAllRanges();
-        props.showAlert("Text Copied to Clipboard", "Success");
+        props.showAlert("Text Copied to Clipboard", "Success!");
     }
 
     const handleClear=()=>{
         setText("");
-        props.showAlert("Text area has been cleared!", "Success")
+        props.showAlert("Text area has been cleared!", "Success!")
     }
     const handleOnChange=(event)=>{
         setText(event.target.value);
     }
 
-    const [text, setText]= useState("text");
+
     //setText
     return (
     <>
     <div className="container mb-3" style={{color: props.mode==="dark"? 'white':'#042743'}}>
         <div className='container'>
             <label htmlFor="exampleFormControlTextarea1" className="myBox" ><h1>Enter text to analyze:</h1></label>
-            <textarea className="form-control" style={{backgroundColor: props.mode==="dark"? '#13466e':'white', color: props.mode==="dark"? 'white':'#042743'}} value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
+            <textarea onClick={handleClear} className="form-control" style={{backgroundColor: props.mode==="dark"? '#13466e':'white', color: props.mode==="dark"? 'white':'#042743'}} value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
         </div >
             <button disabled={text.length===0} className="btn btn-primary my-3 mx-2" onClick={handleUpClick}>Convert to Upper Case</button>
             <button disabled={text.length===0} className="btn btn-primary my-3 mx-2" onClick={handleLowClick}>Convert to Lower Case</button>
