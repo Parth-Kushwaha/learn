@@ -45,12 +45,12 @@ export default function TextForm(props) {
         <div className='container'>
             <label htmlFor="exampleFormControlTextarea1" className="myBox" ><h1>Enter text to analyze:</h1></label>
             <textarea className="form-control" style={{backgroundColor: props.mode==="dark"? '#13466e':'white', color: props.mode==="dark"? 'white':'#042743'}} value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
-        </div>
-            <button className="btn btn-primary my-3 mx-2" onClick={handleUpClick}>Convert to Upper Case</button>
-            <button className="btn btn-primary my-3 mx-2" onClick={handleLowClick}>Convert to Lower Case</button>
-            <button className="btn btn-primary my-3 mx-2" onClick={handleReverse}>Reverse the text</button>
-            <button className="btn btn-primary my-3 mx-2" onClick={handleCopy}>Copy to Clipboard</button>
-            <button className="btn btn-primary my-3 mx-2" onClick={handleClear}>To Clear the Text Area</button>
+        </div >
+            <button disabled={text.length===0} className="btn btn-primary my-3 mx-2" onClick={handleUpClick}>Convert to Upper Case</button>
+            <button disabled={text.length===0} className="btn btn-primary my-3 mx-2" onClick={handleLowClick}>Convert to Lower Case</button>
+            <button disabled={text.length===0} className="btn btn-primary my-3 mx-2" onClick={handleReverse}>Reverse the text</button>
+            <button disabled={text.length===0} className="btn btn-primary my-3 mx-2" onClick={handleCopy}>Copy to Clipboard</button>
+            <button disabled={text.length===0} className="btn btn-primary my-3 mx-2" onClick={handleClear}>To Clear the Text Area</button>
         </div>
     <div className="container my-3" style={{color: props.mode==="dark"? 'white':'#042743'}}>
         <h2>YOUR TEXT SUMMARY</h2>
